@@ -24,6 +24,16 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
+
+                               @if(count($errors) > 0)
+                        <div class="alert alert-danger" roler="alert">
+                            @foreach ($errors->all() as $error)
+                            {{$error}}<br>
+                            @endforeach
+                        </div>
+                        @endif
+                        <form role="form"  method="POST" class="login-form" action="{{ url('/login') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 			                    <form role="form" action="" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
@@ -34,8 +44,6 @@
 			                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
 			                        </div>
 			                        <button type="submit" name="submit" class="btn"  href="/index.html">Sign in!</button>
-
-                                    <span><?php echo $error; ?></span>
 
 			                    </form>
 		                    </div>
